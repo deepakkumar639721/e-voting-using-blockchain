@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>About Us card</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="style.css">
+      <link rel="preconnect" - href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" · crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans :ital,wght@0, 100;0,200;0,300;0,400
+    ;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+      <!-- custom stylesheet -->
+      <link rel="stylesheet" href="main.css">
+
+      <!-- font-awesome icons -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <!-- Jquery CDN -->
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+      <!-- Plugin  -->
+      <script src="jquery.reflection.js"></script>
+      <script src="jquery.cloud9carousel.js"></script>
+</head>
+
+<body>
+      <section class="about" style="display: block;">
+            <div class="content">
+                  <img src="cypher.png">
+                  <div class="text">
+                        <h1>About Us</h1>
+                        <h5>Cyphervote</h5>
+                        <p>Cyphervoting is an online voting website based on blockchain technology. This technology is a
+                              beautiful replacement for traditional electronic voting solutions with distributed,
+                              non-repudiation, and security protection characteristics. It has great potential to
+                              decrease organizational costs and increase voter turnout. It eliminates the need to print
+                              ballot papers or open polling stations-voters can vote from wherever there is an Internet
+                              connection.</p>
+                        <button type="button">Contact</button>
+                  </div>
+            </div>
+      </section>
+
+      <section class="try">
+            <div id="wrap">
+                  <div id="showcase">
+                        <img src="deepak1.png" alt="Deepak" class="cloud9-item">
+                        <img src="diksha1.png" alt="Diksha" class="cloud9-item">
+                        <img src="prateek1.png" alt="Prateek" class="cloud9-item">
+                        <img src="anant3.png" alt="Anant" class="cloud9-item">
+                        <!-- <img src="Angela.png" alt="Angela" class="cloud9-item">
+                        <img src="Claire.png" alt="Claire" class="cloud9-item"> -->
+                  </div>
+
+                  <p id="item-title">&nbsp;</p>
+
+                  <div class="nav noselect">
+                        <button class="left"><i class="fa fa-arrow-left"></i></button>
+                        <button class="right"><i class="fa fa-arrow-right"></i></button>
+                  </div>
+
+            </div>
+      </section>
+      <script type="text/javascript">
+
+            $(function () {
+                  var showcase = $("#showcase")
+
+                  showcase.Cloud9Carousel({
+                        yPos: 42,
+                        yRadius: 48,
+                        mirrorOptions: {
+                              gap: 12,
+                              height: 0.2
+                        },
+                        buttonLeft: $(".nav > .left"),
+                        buttonRight: $(".nav > .right"),
+                        autoPlay: true,
+                        bringToFront: true,
+
+                        onRendered: showcaseUpdated,
+                        onLoaded: function () {
+                              showcase.css('visibility', 'visible')
+                              showcase.css('display', 'none')
+                              showcase.fadeIn(1500)
+                        }
+                  })
+
+                  function showcaseUpdated(showcase) {
+                        var title = $("#item-title").html(
+                              $(showcase.nearestItem()).attr('alt')
+                        )
+
+                        var c = Math.cos((showcase.floatIndex() % 1) * 2 * Math.PI)
+                        title.css('opacity', 0.5 + (0.5 * c))
+                  }
+
+                  $('.nav > button').click(function (e) {
+                        var b = $(e.target).addClass('down')
+                        setTimeout(function () { b.removeClass('down') }, 80)
+                  })
+
+                  $(document).keydown(function (e) {
+                        switch (e.keyCode) {
+                              case 37:
+                                    $('.nav > .left').click()
+                                    break
+
+                              case 39:
+                                    $('.nav > .right').click()
+                        }
+                  })
+            })
+
+      </script>
+</body>
+
+</html>
